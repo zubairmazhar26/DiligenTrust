@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include dtsmartdemo *.css
+recursive-include dtsmartdemo *.csv
+recursive-include dtsmartdemo *.html
+recursive-include dtsmartdemo *.ico
+recursive-include dtsmartdemo *.js
+recursive-include dtsmartdemo *.json
+recursive-include dtsmartdemo *.md
+recursive-include dtsmartdemo *.png
+recursive-include dtsmartdemo *.py
+recursive-include dtsmartdemo *.svg
+recursive-include dtsmartdemo *.txt
+recursive-exclude dtsmartdemo *.pyc

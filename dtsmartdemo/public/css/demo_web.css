@@ -1,0 +1,23 @@
+.footer-powered{
+	display: none!important;
+}
+
+.btn-primary {
+	background-image: linear-gradient(to left, rgb(253 253 253), rgb(219 9 9)) !important;
+	color:#061996 !important;
+	font-weight: bold;
+
+}
+
+.section-head {
+	background-image: linear-gradient(to right, rgb(241 231 231 / 0%), rgb(8 9 8 / 49%)) !important;
+	color:#061996 !important;
+	border-radius: 5px;
+	font-weight: bold;
+
+
+
+}
+.login-content{
+    background: #a3a1a166 !important;
+}

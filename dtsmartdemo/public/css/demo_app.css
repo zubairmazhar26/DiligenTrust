@@ -1,0 +1,51 @@
+li.dropdown.dropdown.dropdown-help.dropdown-mobile {
+	display: none!important;
+}
+.btn-primary.primary-action {
+	background-image: linear-gradient(to left, rgb(253 253 253), rgb(219 9 9)) !important;
+	color:#061996 !important;
+	font-weight: bold;
+
+}
+.btn .btn-primary .btn-sm .primary-action {
+	background-image: linear-gradient(to left, rgb(253 253 253), rgb(219 9 9)) !important;
+	color:#061996 !important;
+	font-weight: bold;
+
+}
+.btn-primary {
+	background-image: linear-gradient(to right, rgb(241 231 231), rgb(219 9 9)) !important;
+	color:#061996 !important;
+	font-weight: bold;
+}
+
+.btn-modal-primary {
+	background-image: linear-gradient(to right, rgb(241 231 231), rgb(219 9 9)) !important;
+	color:#061996 !important;
+	font-weight: bold;
+
+}
+
+.section-head {
+	background-image: linear-gradient(to right, rgb(241 231 231 / 0%), rgb(8 9 8 / 49%)) !important;
+	color:#061996 !important;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.widget-group-title {
+	background-image: linear-gradient(to right, rgb(241 231 231 / 0%), rgb(8 9 8 / 49%)) !important;
+	color:#061996 !important;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.navbar {
+	/* background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(219 9 9)); */
+	background-image: linear-gradient(to right, rgb(255 99 88 / 26%), rgb(219 9 9));
+}
+
+.widget {
+	/* background-image: linear-gradient(to right, rgb(204 204 204), rgb(255 255 255)) !important; */
+}
+

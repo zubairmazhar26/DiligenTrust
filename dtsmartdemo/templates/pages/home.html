@@ -1,0 +1,59 @@
+<!-- <h4>
+    Welcome to the DiligenTrust Smart Office ERP demo. 
+
+</h4> 
+Please try the demo free. 
+
+Please write below for any queries. -->
+
+<!DOCTYPE html>
+<!--Code by Divinector (www.divinectorweb.com)-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>How to Create responsive Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    {% set ws = frappe.get_doc('Whitelabel Setting') %}
+    <header style="background-image: url('{{ws.home_page_background}}');">
+
+        <div class="wrapper">
+            <div class="logo">
+                <img src="{{ws.application_logo}}" alt="" style="width:{{ws.logo_width}}px; height:{{ws.logo_height}}px;">
+            </div>
+            <ul class="nav-area">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/blog">Blog</a></li>
+                {% if frappe.session.user == 'Guest' %}
+                <li><a href="/login">Login</a></li>
+               
+                {% else %}
+                {% endif %}
+                <li><a href="/login#signup">Signup</a></li>
+            </ul>
+        </div>
+        {% set log = frappe.db.sql(""" select user_name, password from `tabUser Details` ORDER BY user_name asc""") %}
+        <div class="login_details">
+            {% for l in log %}
+            <div class="users">
+                <p class="username" style="font-weight: bold;">Username: <small class="uservalue">{{l[0]}}</small></p> 
+                <p class="password" style="font-weight: bold;">Password: <small class="passwordvalue">{{l[1]}}</small></p> 
+            </div>
+            {% endfor %}
+        </div>
+        <div class="welcome-text">
+            <h4>
+                Welcome to the <span>DiligenTrust Smart Office ERP demo</span></h4>
+            <a href="/contact">Contact US</a>
+        </div>
+    </header>
+
+</body>
+
+</html>
