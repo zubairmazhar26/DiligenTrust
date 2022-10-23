@@ -19,11 +19,20 @@ Please write below for any queries. -->
 
 <body>
     {% set ws = frappe.get_doc('Whitelabel Setting') %}
+    {% if ws.home_page_background %}
     <header style="background-image: url('{{ws.home_page_background}}');">
+    {% else %}
+    <header  style="background-image: url('/assets/dtsmartdemo/images/erpsolution.jpeg');">
+    {% endif %}
 
         <div class="wrapper">
             <div class="logo">
+                {% if ws.application_logo %}
                 <img src="{{ws.application_logo}}" alt="" style="width:{{ws.logo_width}}px; height:{{ws.logo_height}}px;">
+                {% else %}
+                <img src="/assets/dtsmartdemo/images/dtsmartdemo_logo.png" alt="" style="width:52px; height:42px;">
+
+                {% endif %}
             </div>
             <ul class="nav-area">
                 <li><a href="/home">Home</a></li>
