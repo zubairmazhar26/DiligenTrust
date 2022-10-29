@@ -8,7 +8,7 @@ frappe.ready(function() {
 	}
 
 	$('.btn-send').off("click").on("click", function() {
-		var name = $('[name="name"]').val();
+		var username = $('[name="name"]').val();
 		var email = $('[name="email"]').val();
 		var contact_no = $('[name="contact_no"]').val();
 		var company_name = $('[name="company_name"]').val();
@@ -29,7 +29,7 @@ frappe.ready(function() {
 		frappe.send_message({
 			subject: $('[name="subject"]').val(),
 			sender: email,
-			name: name,
+			name: username,
 			contact_no: contact_no,
 			company_name: company_name,
 			message: message,
