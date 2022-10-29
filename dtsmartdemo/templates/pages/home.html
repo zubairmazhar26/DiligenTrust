@@ -12,7 +12,7 @@ Please write below for any queries. -->
 
 <head>
     <meta charset="UTF-8">
-    <title>How to Create responsive Homepage</title>
+    <title>Demo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css">
 </head>
@@ -28,23 +28,19 @@ Please write below for any queries. -->
         <div class="wrapper">
             <div class="logo">
                 {% if ws.application_logo %}
-                <img src="{{ws.application_logo}}" alt="" style="width:{{ws.logo_width}}px; height:{{ws.logo_height}}px;">
+                <!-- <img src="{{ws.application_logo}}" alt="" style="width:{{ws.logo_width}}px; height:{{ws.logo_height}}px;"> -->
+                <img src="{{ws.application_logo}}" alt=""style="width:90px; height:73px;">
                 {% else %}
-                <img src="/assets/dtsmartdemo/images/dtsmartdemo_logo.png" alt="" style="width:52px; height:42px;">
+                <img src="/assets/dtsmartdemo/images/dtsmartdemo_logo.png" alt="" style="width:90px; height:73px;">
 
                 {% endif %}
             </div>
             <ul class="nav-area">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/blog">Blog</a></li>
                 {% if frappe.session.user == 'Guest' %}
                 <li><a href="/login">Login</a></li>
                
                 {% else %}
                 {% endif %}
-                <li><a href="/login#signup">Signup</a></li>
             </ul>
         </div>
         {% set log = frappe.db.sql(""" select user_name, password from `tabUser Details` ORDER BY user_name asc""") %}
