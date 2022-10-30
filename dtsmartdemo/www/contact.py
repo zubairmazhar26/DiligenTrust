@@ -28,7 +28,7 @@ max_communications_per_hour = 1000
 
 
 @frappe.whitelist(allow_guest=True)
-def send_message(subject="Website Query", message="", sender="", name="", contact_no="", company_name=""):
+def send_message(subject="Website Query", message="", sender="", user_name="", mobile_no="", company_name=""):
 	if not message:
 		frappe.response["message"] = "Please write something"
 		return
@@ -62,8 +62,8 @@ def send_message(subject="Website Query", message="", sender="", name="", contac
 		dict(
 			doctype="Communication",
 			sender=sender,
-			sender_full_name=name,
-			phone_no=contact_no,
+			user_name=user_name,
+			mobile_no=mobile_no,
 			company=company_name,
 			subject=_("New Message from Website Contact Page"),
 			sent_or_received="Received",

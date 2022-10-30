@@ -8,13 +8,13 @@ frappe.ready(function() {
 	}
 
 	$('.btn-send').off("click").on("click", function() {
-		var username = $('[name="name"]').val();
+		var user_name = $('[name="name"]').val();
 		var email = $('[name="email"]').val();
 		var contact_no = $('[name="contact_no"]').val();
 		var company_name = $('[name="company_name"]').val();
 		var message = $('[name="message"]').val();
 
-		if(!(email && message && name && contact_no && company_name)) {
+		if(!(email && message && username && contact_no && company_name)) {
 			frappe.msgprint('{{ _("Please enter all record so that we can get back to you. Thanks!") }}');
 			return false;
 		}
@@ -29,8 +29,8 @@ frappe.ready(function() {
 		frappe.send_message({
 			subject: $('[name="subject"]').val(),
 			sender: email,
-			name: username,
-			contact_no: contact_no,
+			user_name: user_name,
+			mobile_no: contact_no,
 			company_name: company_name,
 			message: message,
 			callback: function(r) {
