@@ -8,13 +8,15 @@ frappe.ready(function() {
 	}
 
 	$('.btn-send').off("click").on("click", function() {
-		var user_name = $('[name="name"]').val();
+		var user_name = $('[name="user_name"]').val();
 		var email = $('[name="email"]').val();
-		var contact_no = $('[name="contact_no"]').val();
+		var mobile_no = $('[name="mobile_no"]').val();
 		var company_name = $('[name="company_name"]').val();
 		var message = $('[name="message"]').val();
+		var subject = $('[name="subject"]').val();
+		console.log("Details", "User Name", user_name, "Moble", mobile_no, "Company", company_name, "Message", message)
 
-		if(!(email && message && user_name && contact_no && company_name)) {
+		if(!(email && message && user_name && mobile_no && company_name)) {
 			frappe.msgprint('{{ _("Please enter all record so that we can get back to you. Thanks!") }}');
 			return false;
 		}
@@ -26,24 +28,78 @@ frappe.ready(function() {
 		}
 
 		$("#contact-alert").toggle(false);
-		frappe.send_message({
-			subject: $('[name="subject"]').val(),
-			sender: email,
-			user_name: user_name,
-			mobile_no: contact_no,
-			company_name: company_name,
-			message: message,
-			callback: function(r) {
-				if(r.message==="okay") {
-					frappe.msgprint('{{ _("Thank you for your message") }}');
-				} else {
-					frappe.msgprint('{{ _("There were errors") }}');
-					console.log(r.exc);
-				}
-				$(':input').val('');
+		fetch('/api/method/dtsmartdemo.www.contact.send_message', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'X-Frappe-CSRF-Token': frappe.csrf_token
+			},
+			body: JSON.stringify({
+				subject: subject,
+				sender: email,
+				user_name: user_name,
+				mobile_no: mobile_no,
+				company_name: company_name,
+				message: message,
+			})
+		})
+		.then(r => r.json())
+		.then(r => {
+			if(r.message==="okay") {
+				frappe.msgprint('{{ _("Thank you for your message") }}');
+			} else {
+				frappe.msgprint('{{ _("There were errors") }}');
+				console.log(r.exc);
 			}
-		}, this);
-		return false;
+		})
+
+		fetch('/api/method/dtsmartdemo.templates.nutils.send_demo_message', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'X-Frappe-CSRF-Token': frappe.csrf_token
+			},
+			body: JSON.stringify({
+				subject: subject,
+				sender: email,
+				user_name: user_name,
+				mobile_no: mobile_no,
+				company_name: company_name,
+				message: message,
+			})
+		})
+		.then(r => r.json())
+		.then(r => {
+			if(r.message==="okay") {
+				console.log("Lead")
+			} else {
+				frappe.msgprint('{{ _("There were errors") }}');
+				console.log(r.exc);
+			}
+		})
+
+
+
+
+		setTimeout(() => {
+			fetch('/api/method/dtsmartdemo.www.contact.del_open', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'X-Frappe-CSRF-Token': frappe.csrf_token
+				}
+			})
+			.then(r => r.json())
+			.then(r => {
+			})
+		},4000)
+	
+
+		
+
 	});
 
 });

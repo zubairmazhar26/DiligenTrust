@@ -26,6 +26,9 @@ def get_context(context):
 
 max_communications_per_hour = 1000
 
+@frappe.whitelist(allow_guest=True)
+def del_open():
+	frappe.db.sql(""" delete from `tabCommunication` where subject='New Message from Website Contact Page' """)
 
 @frappe.whitelist(allow_guest=True)
 def send_message(subject="Website Query", message="", sender="", user_name="", mobile_no="", company_name=""):
@@ -65,7 +68,7 @@ def send_message(subject="Website Query", message="", sender="", user_name="", m
 			user_name=user_name,
 			mobile_no=mobile_no,
 			company=company_name,
-			subject=_("New Message from Website Contact Page"),
+			subject=_("New Message Demo"),
 			sent_or_received="Received",
 			content=message,
 			status="Open",
