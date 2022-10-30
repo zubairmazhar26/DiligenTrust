@@ -14,7 +14,7 @@ frappe.ready(function() {
 		var company_name = $('[name="company_name"]').val();
 		var message = $('[name="message"]').val();
 
-		if(!(email && message && username && contact_no && company_name)) {
+		if(!(email && message && user_name && contact_no && company_name)) {
 			frappe.msgprint('{{ _("Please enter all record so that we can get back to you. Thanks!") }}');
 			return false;
 		}
