@@ -42,7 +42,7 @@ web_include_css = "/assets/dtsmartdemo/css/demo_web.css"
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
 # Home Pages
-# ----------
+# --------
 
 # application home page (will override Website Settings)
 # home_page = "login"
