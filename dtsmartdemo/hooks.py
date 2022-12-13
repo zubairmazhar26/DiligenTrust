@@ -96,9 +96,10 @@ after_migrate = ['dtsmartdemo.api.whitelabel_patch']
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	# "ToDo": "custom_app.overrides.CustomToDo"
+	"PaymentRequest": "dtsmartdemo.overrides.Pay"
+}
 
 # Document Events
 # ---------------
